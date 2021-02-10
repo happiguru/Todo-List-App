@@ -10,6 +10,6 @@
 /*!*********************************!*\
   !*** ./src/javascript/index.js ***!
   \*********************************/
-eval("console.log('Hi');\n\n//# sourceURL=webpack://Todo-List-App/./src/javascript/index.js?");
+eval("console.log(\"Hello World\");\n\n//# sourceURL=webpack://Todo-List-App/./src/javascript/index.js?");
 /******/ })()
 ;
