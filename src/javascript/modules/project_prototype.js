@@ -18,6 +18,10 @@ export default class ProjectPrototype {
         this.tasks = tasks;
     }
 
+    getAllProjectTask(){
+        return this.tasks;
+    }
+
     getProjectTask(taskName){
         return this.tasks.find((task) => task.getProjectName() === taskName);
     }
