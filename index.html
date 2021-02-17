@@ -1,88 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="shortcut icon" href="images/logo.jpg">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/cbdf2b0f0e.js" crossorigin="anonymous"></script>
-    <title>Tudulist</title>
+    <script src="main.js" defer></script>
   </head>
   <body>
     <div id="content">
-        <header class="top-header mb-3">
-            <!-- Navigation -->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-info static-top">
-                <div class="container">
-                <a class="navbar-brand" href="#">
-                        <img src="http://placehold.it/150x50?text=Logo" alt="">
-                        <span>Tudulist</span>
-                    </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home
-                                <span class="sr-only">(current)</span>
-                                </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item"><a href="#" class="nav-link text-white"><i class="fas fa-user-plus"></i> Sign Up</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link text-white"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                      </ul>
-                </div>
-                </div>
-            </nav>
-        </header>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-4 border">
-                    <!-- As a link -->
-                    <nav class="navbar navbar-light bg-light">
-                        <ul class="nav navbar-nav">
-                            <a class="navbar-brand" id="inbox-project-link" href="#"><i class="fas fa-inbox"></i> Inbox</a>
-                            <a class="navbar-brand" id="today-project-link" href="#"><i class="fas fa-calendar-day"></i> Today</a>
-                            <a class="navbar-brand" id="week-project-link" href="#"><i class="fas fa-calendar-week"></i> This Week</a>
-                        </ul>
-                    </nav>
-                    <aside class="mt-2">
-                        <!-- As a heading -->
-                        <h2>Projects</h2>
-                        <nav class="navbar navbar-light bg-light" id="projects-list">
-                        </nav>
-                        <button class="btn btn-sm btn-primary" id="button-add-project"><i class="fas fa-plus-circle"></i> Add Project</button>
-                        <div class="add-project-popup my-2" id="add-project-popup">
-                            <input class="input-add-project-popup" id="input-add-project-popup" type="text"/>
-                            <div class="add-project-popup-buttons my-2">
-                              <button class="btn btn-sm btn-success button-add-project-popup" id="button-add-project-popup">Add</button>
-                              <button class="btn btn-sm btn-danger button-cancel-project-popup" id="button-cancel-project-popup">Cancel</button>
-                            </div>
-                          </div>
-                    </aside>
-                </div>
-                <div class="col-12 col-md-8 border" id="project-preview">
-                     <!-- Page Content -->
-                    <!-- /.container -->
-                </div>
-            </div>
+      <header class="header">
+        <div class="logo">
+          <i class="fas fa-clipboard-list"></i>
+          <h1 class="page-name">Tudoist</h1>
         </div>
+        <button class="button-open-nav" id="button-open-nav">
+          <i class="fas fa-bars"></i>
+        </button>
+      </header>
+      <main class="main">
+        <nav class="nav" id="nav">
+          <!-- Default projects -->
+          <div class="default-projects-list">
+            <button class="button-default-project" id="button-inbox-projects">
+              <i class="fas fa-inbox"></i>
+              Inbox
+            </button>
+            <button class="button-default-project" id="button-today-projects">
+              <i class="fas fa-calendar-day"></i>
+              Today
+            </button>
+            <button class="button-default-project" id="button-week-projects">
+              <i class="fas fa-calendar-week"></i>
+              This week
+            </button>
+          </div>
+          <!-- User projects -->
+          <h1 class="projects-title">Projects</h1>
+          <div class="projects-list" id="projects-list"></div>
+          <button class="button-add-project" id="button-add-project">
+            <i class="fas fa-plus"></i>
+            Add Project
+          </button>
+          <div class="add-project-popup" id="add-project-popup">
+            <input
+              class="input-add-project-popup"
+              id="input-add-project-popup"
+              type="text"
+            />
+            <div class="add-project-popup-buttons">
+              <button
+                class="button-add-project-popup"
+                id="button-add-project-popup"
+              >
+                Add
+              </button>
+              <button
+                class="button-cancel-project-popup"
+                id="button-cancel-project-popup"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </nav>
+        <!-- Tasks -->
+        <div class="project-preview" id="project-preview"></div>
+      </main>
+      <footer class="footer">
+        <p class="copyright">Copyright © 2021 Stanley Enow Lekunze</p>
+        <a href="https://github.com/happiguru" class="github-link">
+          <i class="github-icon fab fa-github"></i
+        ></a>
+      </footer>
     </div>
-    <footer class="text-center fixed-bottom">
-        <p class="copyright">Copyright © 2021 Happi Guruman</p>
-        <a href="https://github.com/happiguruman" class="github-link"><i class="github-icon fab fa-github"></i> Stanley Enow</a>
-    </footer>
-    <script src="./main.js"></script>
   </body>
 </html>
