@@ -1,74 +1,82 @@
-import ProjectPrototype from './project_prototype';
-import ProjectTask from './tasks';
-import TodoListObject from './todolistobject';
+import Project from './project_prototype';
+import Task from './tasks';
+import TodoList from './todolistobject';
 
 export default class Storage {
     static saveTodoList(data) {
         localStorage.setItem('todoList', JSON.stringify(data));
-    }
-
-    static getTodoList(){
+      }
+    
+      static getTodoList() {
+        // local storage doesn't store type of data so we have to convert it
+    
         const todoList = Object.assign(
-            new TodoListObject(),
-            JSON.parse(localStorage.getItem('todoList')),
+          new TodoList(),
+          JSON.parse(localStorage.getItem('todoList')),
         );
-
-        todoList.setTodoLists(
-            todoList.getTodoLists().map((project) => Object.assign(new ProjectPrototype(), project)),
+    
+        todoList.setProjects(
+          todoList
+            .getProjects()
+            .map((project) => Object.assign(new Project(), project)),
         );
-
-        todoList.getTodoLists().forEach((project) => project.setTaskName(
-            project.getTaskName().map((task) => Object.assign(new ProjectTask(), task)),
-        ),
-        );
+    
+        todoList
+          .getProjects()
+          .forEach((project) =>
+            project.setTasks(
+              project.getTasks().map((task) => Object.assign(new Task(), task)),
+            ),
+          );
+    
         return todoList;
-    }
-
-    static addProject(project){
-        const todolistobject = Storage.getTodoList();
-        todolistobject.addProject(project);
-        Storage.saveTodoList(todolistobject);
-    }
-
-    static destroyProject(project_name) {
+      }
+    
+      static addProject(project) {
         const todoList = Storage.getTodoList();
-        todoList.destroyProject(project_name);
+        todoList.addProject(project);
         Storage.saveTodoList(todoList);
-    }
-
-    static addTask(project_name, task) {
+      }
+    
+      static deleteProject(projectName) {
         const todoList = Storage.getTodoList();
-        todoList.getProject(project_name).addTask(task);
+        todoList.deleteProject(projectName);
         Storage.saveTodoList(todoList);
-    }
-
-    static destroyTask(project_name, taskName){
+      }
+    
+      static addTask(projectName, task) {
         const todoList = Storage.getTodoList();
-        todoList.getProject(project_name).destroyTask(taskName);
+        todoList.getProject(projectName).addTask(task);
         Storage.saveTodoList(todoList);
-    }
-
-    static renameTask(project_name, taskName, newTaskName){
+      }
+    
+      static deleteTask(projectName, taskName) {
         const todoList = Storage.getTodoList();
-        todoList.getProject(project_name).getTaskName(taskName).setTaskName(newTaskName);
+        todoList.getProject(projectName).deleteTask(taskName);
         Storage.saveTodoList(todoList);
-    }
-
-    static setTaskDate(project_name, taskName, newDueDate){
+      }
+    
+      static renameTask(projectName, taskName, newTaskName) {
         const todoList = Storage.getTodoList();
-        todoList.getProject(project_name).getTaskName(taskName).setTaskDate(newDueDate);
+        todoList.getProject(projectName).getTask(taskName).setName(newTaskName);
         Storage.saveTodoList(todoList);
-    }
-
-    static updateTodayProject(){
+      }
+    
+      static setTaskDate(projectName, taskName, newDueDate) {
+        const todoList = Storage.getTodoList();
+        todoList.getProject(projectName).getTask(taskName).setDate(newDueDate);
+        Storage.saveTodoList(todoList);
+      }
+    
+      static updateTodayProject() {
         const todoList = Storage.getTodoList();
         todoList.updateTodayProject();
         Storage.saveTodoList(todoList);
-    }
-
-    static updateWeekProject(){
+      }
+    
+      static updateWeekProject() {
         const todoList = Storage.getTodoList();
         todoList.updateWeekProject();
         Storage.saveTodoList(todoList);
-    }
+      }
 }

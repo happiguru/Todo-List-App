@@ -1,26 +1,26 @@
-export default class ProjectTask{
-    constructor(taskName, dueDate = 'No date'){
-        this.taskName = taskName;
+export default class Task {
+    constructor(name, dueDate = 'No date') {
+        this.name = name;
         this.dueDate = dueDate;
-    }
-
-    setTaskName(taskName){
-        this.taskName = taskName;
-    }
-
-    getTaskName() {
-        return this.taskName;
-    }
-
-    setDate(dueDate){
+      }
+    
+      setName(name) {
+        this.name = name;
+      }
+    
+      getName() {
+        return this.name;
+      }
+    
+      setDate(dueDate) {
         this.dueDate = dueDate;
-    }
-
-    getDate(){
+      }
+    
+      getDate() {
         return this.dueDate;
-    }
-
-    getDateFormatted(){
+      }
+    
+      getDateFormatted() {
         const day = this.dueDate.split('/')[0];
         const month = this.dueDate.split('/')[1];
         const year = this.dueDate.split('/')[2];

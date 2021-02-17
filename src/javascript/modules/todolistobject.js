@@ -1,84 +1,83 @@
 import { compareAsc, toDate } from 'date-fns';
-import ProjectPrototype from './project_prototype';
-import ProjectTask from './tasks';
+import Project from './project_prototype';
+import Task from './tasks';
 
-export default class TodoListObject {
-    constructor(){
+export default class TodoList {
+    constructor() {
         this.projects = [];
-        this.projects.push(new ProjectPrototype('Inbox'));
-        this.projects.push(new ProjectPrototype('Today'));
-        this.projects.push(new ProjectPrototype('This week'));
-    }
-
-    setTodoLists(projects){
+        this.projects.push(new Project('Inbox'));
+        this.projects.push(new Project('Today'));
+        this.projects.push(new Project('This week'));
+      }
+    
+      setProjects(projects) {
         this.projects = projects;
-    }
-
-    getTodoLists(){
+      }
+    
+      getProjects() {
         return this.projects;
-    }
-
-    getTodoList(projectName){
-        return this.projects.find((project) => project.getProjectName() === projectName);
-    }
-
-    verify(projectName){
-        return this.projects.some((project) => project.getProjectName() === projectName);
-    }
-
-    addTodoList(project){
-        if(this.projects.indexOf(project) > 0) return;
+      }
+    
+      getProject(projectName) {
+        return this.projects.find((project) => project.getName() === projectName);
+      }
+    
+      contains(projectName) {
+        return this.projects.some((project) => project.getName() === projectName);
+      }
+    
+      addProject(project) {
+        if (this.projects.indexOf(project) > 0) return;
         this.projects.push(project);
-    }
-
-    destroyTodoList(projectName){
-        const todolistToDestroy = this.projects.find(
-            (project) => project.getProjectName() === projectName
+      }
+    
+      deleteProject(projectName) {
+        const projectToDelete = this.projects.find(
+          (project) => project.getName() === projectName,
         );
-        this.projects.splice(this.projects.indexOf(todolistToDestroy), 1);
-    }
-
-    updateTodayList(){
-        this.getTodoList('Today').tasks = [];
-
+        this.projects.splice(this.projects.indexOf(projectToDelete), 1);
+      }
+    
+      updateTodayProject() {
+        this.getProject('Today').tasks = [];
+    
         this.projects.forEach((project) => {
-            if(project.getProjectName() === 'Today' || project.getProjectName() === 'This week')
+          if (project.getName() === 'Today' || project.getName() === 'This week')
             return;
-
-            const todayTasks = project.getTasksToday();
-            todayTasks.forEach((task) => {
-                const taskName = `${task.getProjectName()} (${project.getProjectName})`;
-                this.getTodoList('Today').addTask(new ProjectTask(taskName, task.getDate()));
-            });
+    
+          const todayTasks = project.getTasksToday();
+          todayTasks.forEach((task) => {
+            const taskName = `${task.getName()} (${project.getName()})`;
+            this.getProject('Today').addTask(new Task(taskName, task.getDate()));
+          });
         });
-    }
-
-    updateWeekList(){
-        this.getTodoList('This week').tasks = [];
-
+      }
+    
+      updateWeekProject() {
+        this.getProject('This week').tasks = [];
+    
         this.projects.forEach((project) => {
-            if(project.getProjectName() === 'Today' || project.getProjectName() === 'This week')
+          if (project.getName() === 'Today' || project.getName() === 'This week')
             return;
-
-        const weekTasks = project.getTasksThisWeek();
-        weekTasks.forEach((task) => {
-            const taskName = `${task.getProjectName()} (${project.getProjectName()})`;
-            this.getTodoList('This week').addTask(
-                new ProjectTask(taskName, task.getDate()),
+    
+          const weekTasks = project.getTasksThisWeek();
+          weekTasks.forEach((task) => {
+            const taskName = `${task.getName()} (${project.getName()})`;
+            this.getProject('This week').addTask(
+              new Task(taskName, task.getDate()),
             );
-
-        });  
-       });
-
-       this.getTodoList('This week').setTasks(
-           this.getTodoList('This week')
-           .getAllProjectTask()
-           .sort((taskX, taskY) => 
-            compareAsc(
-                toDate(new Date(taskX.getDateFormatted())),
-                toDate(new Date(taskY.getDateFormatted())),
+          });
+        });
+    
+        this.getProject('This week').setTasks(
+          this.getProject('This week')
+            .getTasks()
+            .sort((taskA, taskB) =>
+              compareAsc(
+                toDate(new Date(taskA.getDateFormatted())),
+                toDate(new Date(taskB.getDateFormatted())),
+              ),
             ),
-           ),
-       );
-    }
+        );
+      }
 }
