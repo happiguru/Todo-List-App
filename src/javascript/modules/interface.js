@@ -4,7 +4,7 @@ import Project from './project_prototype';
 import Task from './tasks';
 
 export default class UI {
-     // LOADING CONTENT
+  // LOADING CONTENT
 
   static loadHomepage() {
     UI.loadProjects();
@@ -18,9 +18,9 @@ export default class UI {
       .getProjects()
       .forEach((project) => {
         if (
-          project.name !== 'Inbox' &&
-          project.name !== 'Today' &&
-          project.name !== 'This week'
+          project.name !== 'Inbox'
+          && project.name !== 'Today'
+          && project.name !== 'This week'
         ) {
           UI.createProject(project.name);
         }
@@ -139,8 +139,8 @@ export default class UI {
       UI.closeAddTaskPopup();
     }
     if (
-      document.getElementById('tasks-list') &&
-      document.getElementById('tasks-list').innerHTML !== ''
+      document.getElementById('tasks-list')
+      && document.getElementById('tasks-list').innerHTML !== ''
     ) {
       UI.closeAllInputs();
     }
@@ -245,9 +245,7 @@ export default class UI {
     inboxProjectsButton.addEventListener('click', UI.openInboxTasks);
     todayProjectsButton.addEventListener('click', UI.openTodayTasks);
     weekProjectsButton.addEventListener('click', UI.openWeekTasks);
-    projectButtons.forEach((projectButton) =>
-      projectButton.addEventListener('click', UI.handleProjectButton),
-    );
+    projectButtons.forEach((projectButton) => projectButton.addEventListener('click', UI.handleProjectButton));
     openNavButton.addEventListener('click', UI.openNav);
   }
 
@@ -369,15 +367,9 @@ export default class UI {
     const taskNameInputs = document.querySelectorAll('[data-input-task-name');
     const dueDateInputs = document.querySelectorAll('[data-input-due-date');
 
-    taskButtons.forEach((taskButton) =>
-      taskButton.addEventListener('click', UI.handleTaskButton),
-    );
-    taskNameInputs.forEach((taskNameInput) =>
-      taskNameInput.addEventListener('keypress', UI.renameTask),
-    );
-    dueDateInputs.forEach((dueDateInput) =>
-      dueDateInput.addEventListener('change', UI.setTaskDate),
-    );
+    taskButtons.forEach((taskButton) => taskButton.addEventListener('click', UI.handleTaskButton));
+    taskNameInputs.forEach((taskNameInput) => taskNameInput.addEventListener('keypress', UI.renameTask));
+    dueDateInputs.forEach((dueDateInput) => dueDateInput.addEventListener('change', UI.setTaskDate));
   }
 
   static handleTaskButton(e) {

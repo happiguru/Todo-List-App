@@ -12,12 +12,12 @@ module.exports = {
   // Webpack will bundle all JavaScript into this file
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js'
+    filename: 'main.js',
   },
 
   // Default mode for Webpack is production.
   // Depending on mode Webpack will apply different things
-  // on final bundle. For now we don't need production's JavaScript 
+  // on final bundle. For now we don't need production's JavaScript
   // minifying and other thing so let's set mode to development
-  mode: 'development'
+  mode: 'development',
 };

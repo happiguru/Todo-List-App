@@ -4,6 +4,12 @@ Exceptional Todo List Application
 
 This projects implements the use of JavaScript concepts about the use of webpack and ES6 features.
 
+1. Todo List Application built entirely with JavaScript
+2. ES6 and Modules
+3. Object Oriented Programming Approach
+4. Webpack bundler
+5. date-fns
+
 
 ## Built With
 
@@ -14,7 +20,7 @@ This projects implements the use of JavaScript concepts about the use of webpack
 
 ## Live Demo
 
-[Live Demo Link](http://www.lekunzestanley.me/Restaurant-Website/index.html)
+[Live Demo Link](http://www.lekunzestanley.me/Todo-List-App/)
 
 
 ## Getting Started
