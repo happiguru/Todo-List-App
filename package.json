@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "webpack-dev-server": "webpack-dev-server",
-    "dev": "webpack-dev-server --mode=development",
+    "dev": "webpack serve --mode=development",
     "prod": "webpack --mode=production",
-    "lint": "eslint ./", "build": "webpack", "dev": "webpack serve"
+    "lint": "eslint ./",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
