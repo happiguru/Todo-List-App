@@ -1,5 +1,4 @@
 // Webpack uses this to work with directories
-// const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 // This is the main configuration object.
@@ -15,10 +14,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
   },
-  // plugins: [
-  //   new HtmlWebPackPlugin()
-  // ]
-
   // Default mode for Webpack is production.
   // Depending on mode Webpack will apply different things
   // on final bundle. For now we don't need production's JavaScript
