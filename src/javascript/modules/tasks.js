@@ -1,25 +1,15 @@
 export default class Task {
-  constructor(title, description, dueDate = 'No date', priority = 'low') {
-    this.title = title;
-    this.description = description;
+  constructor(name, dueDate = 'No date') {
+    this.name = name;
     this.dueDate = dueDate;
-    this.priority = priority;
   }
 
-  setTitle(title) {
-    this.title = title;
+  setName(name) {
+    this.name = name;
   }
 
-  getTitle() {
-    return this.title;
-  }
-
-  setDescription(description) {
-    this.description = description;
-  }
-
-  getDescription() {
-    return this.description;
+  getName() {
+    return this.name;
   }
 
   setDate(dueDate) {
@@ -35,13 +25,5 @@ export default class Task {
     const month = this.dueDate.split('/')[1];
     const year = this.dueDate.split('/')[2];
     return `${month}/${day}/${year}`;
-  }
-
-  setPriority(priority) {
-    this.priority = priority;
-  }
-
-  getPriority() {
-    return this.priority;
   }
 }
