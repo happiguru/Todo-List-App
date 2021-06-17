@@ -109,7 +109,7 @@ function viewTodo(e) {
 function deleteTodo(e) {
   if (!e.target.matches('.delete')) return;
 
-  const confirmation = confirm('Do you really want to delete this Todo?');
+  const confirmation = window.confirm('Do you really want to delete this Todo?'); // eslint-disable-line no-alert
 
   if (!confirmation) return;
 

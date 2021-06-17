@@ -89,7 +89,7 @@ function editProject() {
 }
 
 function deleteProject() {
-  const confirmation = confirm('Do you really want to delete this Project?');
+  const confirmation = window.confirm('Do you really want to delete this Project?'); // eslint-disable-line no-alert
   if (!confirmation) return;
 
   deleteCurrentProject();
