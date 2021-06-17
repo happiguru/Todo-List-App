@@ -6,7 +6,6 @@ import { currentProject, randomProject } from '../project/projectMan';
 import '../project/project-ui';
 import '../todo/todo-form';
 
-
 const projects = document.querySelector('.projects');
 const projectList = document.querySelector('.project-list');
 
@@ -110,8 +109,8 @@ function viewTodo(e) {
 function deleteTodo(e) {
   if (!e.target.matches('.delete')) return;
 
-  // eslint-disable-next-line no-alert
   const confirmation = confirm('Do you really want to delete this Todo?');
+
   if (!confirmation) return;
 
   const { index } = e.target.dataset;
