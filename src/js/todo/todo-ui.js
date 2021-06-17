@@ -47,7 +47,7 @@ export default function display(task, tagline) {
   priority.add(option2);
   priority.add(option3);
   priority.selectedIndex = ['low', 'medium', 'high'].findIndex(
-    (el) => el === task.priority
+    (el) => el === task.priority,
   );
   priorityContainer.appendChild(priorityLabel);
   priorityContainer.appendChild(priority);

@@ -47,9 +47,8 @@ function updateProjects(currentProjects) {
   projectList.innerHTML = currentProjects
     .map(
       (projectItem, i) => `
-        <li data-index='${i}'>${projectItem.title}</li>`
-    )
-    .join('');
+        <li data-index='${i}'>${projectItem.title}</li>`,
+        ).join('');
 }
 
 function showProject(e) {
@@ -84,7 +83,7 @@ function showProject(e) {
       </td>
       <td><button class='view' data-index='${i}'><span class="material-icons">zoom_in</span></button></td>
       <td><button class='delete' data-index='${i}'><span class="material-icons">delete_forever</span></button></td>
-      </tr>`
+      </tr>`,
     )
     .join('');
 }
@@ -111,7 +110,7 @@ function viewTodo(e) {
 function deleteTodo(e) {
   if (!e.target.matches('.delete')) return;
 
-  // eslint-disable-next-line no-restricted-globals
+  // eslint-disable-next-line no-alert
   const confirmation = confirm('Do you really want to delete this Todo?');
   if (!confirmation) return;
 
