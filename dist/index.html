@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Todoist</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class='container'>
+      <header>
+        <button class='toggle-projects'>
+          <span class="material-icons hidden">menu</span>
+          <span class="material-icons">close</span>
+        </button>
+        <h1>Todoist App</h1>
+        <button class='random-todo'>
+          <span class="material-icons">bolt</span>
+        </button>
+      </header>
+  
+      <aside class='projects active'>
+        <div class='banner'>
+
+          <h2>Projects</h2>
+          <button class='add-project'>
+            <span class="material-icons">add</span>
+          </button>
+        </div>
+        <ul class='project-list'></ul>
+      </aside>
+
+      <form class='project-form pop-up hidden'>
+        <h1>New Project</h1>
+        <input type='text' name='title' placeholder='Title' class='form-line' required>
+        <textarea name='description' placeholder='Description' class='form-line'></textarea>
+        <div class='form-line'>
+          <button class='cancel-project'>Cancel</button>
+          <input type='submit' value='+ Add Project'>
+        </div>
+      </form>
+  
+      <div class='project hidden'>
+        <div class='banner'>
+          <div>
+            <h2 class='project-title'></h2>
+            <button class='edit-project-button'>
+              <span class="material-icons">edit</span>
+            </button>
+            <button class='delete-project-button'>
+              <span class="material-icons">delete_forever</span>
+            </button>
+          </div>
+          <button class='new-todo'>
+            <span class="material-icons">add</span>
+          </button>
+        </div>
+        <h4 class='project-description'></h4>
+        <form class='edit-project-form hidden pop-up'></form>
+        <form class='new-todo-form pop-up hidden'>
+          <h1></h1>
+          <input type='text' name='title' class='form-line' placeholder='Title' required>
+          <textarea name='description' class='form-line' placeholder='Description'></textarea>
+          <div class='form-line'>
+            <div>
+              <label for='date'>Deadline</label>
+              <input type='date' id='date' name='due-date'>
+            </div>
+            <select name='priority' required>
+              <option disabled selected value=''>Priority</option>
+              <option value='low'>Low</option>
+              <option value='medium'>Medium</option>
+              <option value='high'>High</option>
+            </select>
+          </div>
+          <div class='form-line'>
+            <button class='cancel-todo'>Cancel</button>
+            <input type='submit' value='+ Add Todo'>
+          </div>
+        </form>
+        <table class='todo-table'>
+          <thead>
+            <tr>
+              <th data-name='sortedTitle'>Title</th>
+              <th data-name='sortedDueDate'>Due</th>
+              <th data-name='sortedPriority'>Priority</th>
+              <th data-name='completed'>
+                <span class="material-icons">done_outline</span>
+                </th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class='todo-items'></tbody>
+        </table>
+        <form class='view-todo pop-up hidden'></form>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
