@@ -6,13 +6,22 @@ const path = require('path');
 module.exports = {
   context: __dirname,
   // Path to your entry point. From this file Webpack will begin his work
-  entry: './src/javascript/index.js',
+  entry: './src/index.js',
 
   // Path and filename of your result bundle.
   // Webpack will bundle all JavaScript into this file
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   // Default mode for Webpack is production.
   // Depending on mode Webpack will apply different things
