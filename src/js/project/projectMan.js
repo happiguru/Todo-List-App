@@ -52,3 +52,7 @@ function deleteCurrentProject() {
 export {
   add, remove, load, randomProject, deleteCurrentProject, currentProject,
 };
+
+module.exports = {
+  add, remove, load, randomProject, deleteCurrentProject, currentProject,
+};

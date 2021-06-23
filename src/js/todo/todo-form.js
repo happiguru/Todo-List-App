@@ -31,3 +31,5 @@ function addTodo(e) {
   this.reset();
   toggleTodoForm(e);
 }
+
+module.exports = addTodo;

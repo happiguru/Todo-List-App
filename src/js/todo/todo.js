@@ -51,3 +51,5 @@ export default class Task {
     }
   }
 }
+
+module.exports = Task;

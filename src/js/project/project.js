@@ -37,3 +37,5 @@ export default class Project {
     return this.tasks[index];
   }
 }
+
+module.exports = Project;
