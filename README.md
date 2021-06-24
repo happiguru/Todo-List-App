@@ -33,7 +33,10 @@ To get a local copy  and to set it up and running follow these simple example st
 - Browser
 - Internet
 
-- Download the code from repository (https://github.com/happiguru/Todo-List-App) and double click the index.html file
+- Download the code from repository (https://github.com/happiguru/Todo-List-App).
+- Run `npm install` and `npm run dev` and the open the dist folder index.html file
+- Run `npm run test` to run all TDD tests
+- and double click the index.html file
 
 
 ## Authors
