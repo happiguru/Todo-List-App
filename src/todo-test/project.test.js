@@ -3,6 +3,8 @@ const Project = require('../js/project/project');
 describe('Add a new Project', () => {
   let projectObject;
 
+  const emptytask = {};
+
   beforeAll(() => {
     projectObject = new Project('New Project', 'Personal');
   });
@@ -22,6 +24,11 @@ describe('Add a new Project', () => {
 
   test('should add task to project', () => {
     expect(projectObject.addTodo).toBeTruthy();
+  });
+
+  test('should check if an empty task can be added to project', () => {
+    const result = projectObject.addTodo(emptytask);
+    expect(result).toBeTruthy();
   });
 
   test('should check if update project task works', () => {

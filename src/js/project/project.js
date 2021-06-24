@@ -9,8 +9,11 @@ export default class Project {
   }
 
   addTodo(task) {
-    this.tasks.push(task);
-    Observer.omit('updateProject');
+    if (task !== {}) {
+      this.tasks.push(task);
+      Observer.omit('updateProject');
+    }
+    return 'cannot store empty task';
   }
 
   removeTodo(index) {
